@@ -9,18 +9,18 @@
 
 \* Equal contribution $\dagger$ Project leader
 
-
+With trajectory-aware 4D generation, OccSora has the potential to serve as a world simulator for the decision-making of autonomous driving.
 
 
 ## News
 
-- **[2024/05/30]** Training, evaluation, and visualization code release.
-- **[2024/05/30]** Paper released on [arXiv](https://arxiv.org/abs/2405.).
+- **[2024/05/31]** Training, evaluation, and visualization code release.
+- **[2024/05/31]** Paper released on [arXiv](https://arxiv.org/abs/2405.).
 
 
 ## Demo
 
-### Trajectory Video Generation:
+### Trajectory-aware Video Generation:
 
 ![demo](./assets/demo1.gif)
 
@@ -31,7 +31,7 @@
 ## Overview
 ![overview](./assets/fig1.png)
 
-The pipeline of OccSora. The 4D occupancy scene tokenizer achieves compression and restoration of real information. The compressed information and vehicle trajectories are simultaneously used as inputs for the diffusion-based world model, generating trajectory-controllable tokens that are decoded into 4D occupancy.
+Different from most existing world models which adopt an autoregressive framework to perform next-token prediction, we propose a diffusion-based 4D occupancy generation model, OccSora, to model long-term temporal evolutions more efficiently. We employ a 4D scene tokenizer to obtain compact discrete spatial-temporal representations for 4D occupancy input and achieve high-quality reconstruction for long-sequence occupancy videos. We then learn a diffusion transformer on the spatial-temporal representations and generate 4D occupancy conditioned on a trajectory prompt. OccSora can generate 16s-videos with authentic 3D layout and temporal consistency, demonstrating its ability to understand the spatial and temporal distributions of driving scenes.
 
 
 ## Getting Started
@@ -68,8 +68,6 @@ OccSora/data
     nuscenes_infos_train_temporal_v3_scene.pkl
     nuscenes_infos_val_temporal_v3_scene.pkl
 ```
-
-
 
 ### Training
 Train the VQVAE on A100 with 80G GPU memory.
@@ -111,6 +109,10 @@ Also thanks to these excellent open-sourced repos:
 
 If you find this project helpful, please consider citing the following paper:
 ```
-@article{
-}
+  @article{wang2024occsora,
+    title={OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving},
+    author={Wang, Lening and Zheng, Wenzhao and Ren, Yilong and Jiang, Han and Cui, Zhiyong and Yu, Haiyang and Lu, Jiwen},
+    journal={arXiv preprint arXiv:2405.},
+    year={2024}
+	}
 ```
