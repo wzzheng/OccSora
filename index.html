@@ -58,6 +58,12 @@
   clear: both;
 }
 </style>
+
+<style>
+  .breakword{word-wrap: break-word;}
+</style>
+
+
 </head>
 
 <body class="nd-docs">
@@ -66,24 +72,24 @@
  <p class="lead" style="font-size:30px">
     <b><a href="https://arxiv.org/">OccSora: 4D Occupancy Generation Models as<br> World Simulators for Autonomous Driving </a></b>
   <address style="font-size: 110%;">
-    <nobr><a href="https://github.com/LeningWang">Lening Wang</a><sup>*</sup><sup>†</sup>,</nobr>
+    <b><nobr><a href="https://github.com/LeningWang">Lening Wang</a><sup>*</sup><sup>†</sup>,</nobr>
     <nobr><a href="https://wzzheng.net/">Wenzhao Zheng</a><sup>*</sup><sup>‡</sup>,</nobr>
     <nobr><a href="https://shi.buaa.edu.cn/renyilong/zh_CN/index.htm">Yilong Ren</a>,</nobr>
     <nobr><a href="https://scholar.google.com/citations?user=d0WJTQgAAAAJ&hl=zh-CN&oi=ao">Han Jiang</a>,</nobr>
     <nobr><a href="https://zhiyongcui.com/">Zhiyong Cui</a>,</nobr>
     <nobr><a href="https://shi.buaa.edu.cn/09558/zh_CN/index.htm">Haiyang Yu</a>,</nobr>
-    <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup></sup>
-  <br>
-      <nobr>State Key Lab of Intelligent Transportation System, Beihang University, China</nobr>;
-      <nobr>EECS, UC Berkeley, United States</nobr>;
-      <nobr>Department of Automation, Tsinghua University, China</nobr>
+    <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup></sup></nobr></b>
+  <br><br>
+      State Key Lab of Intelligent Transportation System, Beihang University, China <br>
+      EECS, UC Berkeley, United States <br>
+      Department of Automation, Tsinghua University, China
       
       <!-- <nobr><sup>2</sup>PhiGent Robotics</nobr> -->
   </address>
    <!-- <div style="font-size: 170%;">CVPR 2023</div> -->
   <address style="font-size: 120%;">
 	 <!-- <br> -->
-  [<a href="https://arxiv.org/pdf/"><b>Paper (Arxiv)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  [<a href="https://arxiv.org/pdf/"><b>Paper (arXiv)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
   <!-- [<a href="https://www.youtube.com/">Video(Youtube)</a>]&nbsp;&nbsp;&nbsp;&nbsp; -->
   [<a href="https://github.com/wzzheng/OccSora"><b>Code (GitHub)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
   <!-- [<a href="https://zhuanlan.zhihu.com">Post(Zhihu)</a>] -->
@@ -100,26 +106,32 @@
 
 
 <p align="center">
-  <video width="90%" controls>
+  <video width="90%" autoplay controls>
     <source src="videos/demo.mp4" type="video/mp4">
   </video>
 </p>
 
 <p align="center">
-    <img src="images/fig0.1.png" width="90%">
+  <img src="images/teaser.png" width="90%">
 </p>
-<p><b>Comparisons with existing methods.</b> 
-It can comprehend the intricate relationship between scenes and trajectories and generate long-term, physically consistent 4D occupancy.
+<p class = "breakword"><b>Overview of our contributions.</b> 
+Different from most existing world models which adopt an autoregressive framework to perform next-token prediction, we propose a diffusion-based 4D occupancy generation model, OccSora, to model long-term temporal evolutions more efficiently.
+We employ a 4D scene tokenizer to obtain compact discrete spatial-temporal representations for 4D occupancy input and achieve high-quality reconstruction for long-sequence occupancy videos.
+We then learn a diffusion transformer on the spatial-temporal representations and generate 4D occupancy conditioned on a trajectory prompt. 
+OccSora can generate 16s-videos with authentic 3D layout and temporal consistency, demonstrating its ability to understand the spatial and temporal distributions of driving scenes.
 </p>
-
 
 
 <p align="center">
-    <img src="images/teaser.png" width="90%">
+    <img src="images/fig0.1.png" width="90%">
 </p>
-<p><b>The pipeline of OccSora.</b> 
-The 4D occupancy scene tokenizer achieves compression and restoration of real information. The compressed information and vehicle trajectories are simultaneously used as inputs for the diffusion-based world model, generating trajectory-controllable tokens that are decoded into 4D occupancy.
+<p><b>Comparisons with existing methods.</b> 
+With trajectory-aware 4D generation, OccSora has the potential to serve as a world simulator for the decision-making of autonomous driving.
 </p>
+
+
+
+
 
 
 <!-- <h2>Abstract</h2><hr>
@@ -140,7 +152,7 @@ The 4D occupancy scene tokenizer achieves compression and restoration of real in
     <img src="images/comparisons.png" width="90%">
 </p>
 <p>
-  The structure of the 4D occupancy scene tokenizer. The proposed method encodes and compresses 4D scenes to extract high-dimensional features, which are then decoded to retrieve the spatiotemporal physical characteristics of the scenes.
+<b>The architecture of the 4D occupancy scene tokenizer.</b> The proposed method encodes and compresses 4D scenes to extract high-dimensional features, which are then decoded to retrieve the spatiotemporal physical characteristics of the scenes.
 </p>
 
 
@@ -152,18 +164,20 @@ The 4D occupancy scene tokenizer achieves compression and restoration of real in
      <img src="images/overview.png" width="90%">
 </p>
 
-  The structure of the diffusion-based world model. The model involves utilizing the optimal codebook obtained from training the 4D occupancy scene tokenizer to convert 4D occupancy into a sequence of tokens. These tokens, along with the ego vehicle trajectory and random noise, are then combined as input for denoising training to acquire the generated token.
+<b>Illustration of the diffusion-based world model.</b> The model involves utilizing the optimal codebook obtained from training the 4D occupancy scene tokenizer to convert 4D occupancy into a sequence of tokens. These tokens, along with the ego vehicle trajectory and random noise, are then combined as input for denoising training to acquire the generated token.
 
 
 
 
 <h2>Results</h2><hr>
 
+OccSora can generate autonomous driving 4D occupancy scenes that adhere to physical logic and achieve controllable scene generation based on different trajectories.
 
+<p></p>
 
 <h4>4D Occupancy Generation</h4><hr>
 
-Visualization of reconstruction of the 4D occupancy scene tokenizer.
+<b>Visualization of reconstruction of the 4D occupancy scene tokenizer.</b> We directly compress a long video sequence to obtain a spatial-temporal scene representation.
 
 <p></p>
 
@@ -173,9 +187,9 @@ Visualization of reconstruction of the 4D occupancy scene tokenizer.
 <!-- <b>Visualization results on 3D semantic occupancy prediction and nuScenes LiDAR segmentation.</b> Our method can generate more comprehensive prediction results than the LiDAR segmentation ground truth. -->
 
 
-<h4>Trajectory Video Generation.</h4><hr>
+<h4>Trajectory Video Generation</h4><hr>
 
-4D occupancy generation under different input trajectories. From top to bottom, there is go straight, turning right, and motionless, with each scene generation corresponding to the trajectory, ensuring logical coherence and continuity.
+<b>4D occupancy generation under different input trajectories.</b> From top to bottom, there is go straight, turning right, and motionless, with each scene generation corresponding to the trajectory, ensuring logical coherence and continuity.
 
 <p></p>
 
@@ -184,9 +198,9 @@ Visualization of reconstruction of the 4D occupancy scene tokenizer.
 </p>
 
 
-<h4>Scene Video Generation.</h4><hr>
+<h4>Scene Video Generation</h4><hr>
 
-Generating diverse continuous scenes under trajectory control. The generated scenes exhibit diversity while maintaining the stability of the original trajectory control.
+<b>Generating diverse continuous scenes under trajectory control.</b> The generated scenes exhibit diversity while maintaining the stability of the original trajectory control.
 
 
 <p></p>
@@ -205,7 +219,11 @@ Generating diverse continuous scenes under trajectory control. The generated sce
 <h3 class="card-header">Bibtex</h3>
 <div class="card-block">
 <pre class="card-text clickselect">
-  @article{
+  @article{wang2024occsora,
+    title={OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving},
+    author={Wang, Lening and Zheng, Wenzhao and Ren, Yilong and Jiang, Han and Cui, Zhiyong and Yu, Haiyang and Lu, Jiwen},
+    journal={arXiv preprint arXiv:2405.},
+    year={2024}
 }
 </pre>
 </div>
