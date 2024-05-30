@@ -1,22 +1,21 @@
 # OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving
 
+### [Paper](https://arxiv.org/)  | [Project Page](https://wzzheng.net/OccSora) 
 
 
-### [Paper](https://arxiv.org/)  
-
-
-
+> OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving
 
 > [Lening Wang](https://github.com/LeningWang)*, [Wenzhao Zheng](https://wzzheng.net/)\* $\dagger$, [Yilong Ren](https://shi.buaa.edu.cn/renyilong/zh_CN/index.htm), [Han Jiang](https://scholar.google.com/citations?user=d0WJTQgAAAAJ&hl=zh-CN&oi=ao), [Zhiyong Cui](https://zhiyongcui.com/), [Haiyang Yu](https://shi.buaa.edu.cn/09558/zh_CN/index.htm), [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/)
 
-\* Equal contribution $\dagger$ Corresponding author
+\* Equal contribution $\dagger$ Project leader
+
+
 
 
 ## News
 
-- **[2024/05/29]** Training, evaluation and visualization code release.
-
-
+- **[2024/05/30]** Training, evaluation, and visualization code release.
+- **[2024/05/30]** Paper released on [arXiv](https://arxiv.org/abs/2405.).
 
 
 ## Demo
@@ -29,39 +28,27 @@
 
 ![demo](./assets/demo2.gif)
 
-
-
-
-
 ## Overview
 ![overview](./assets/fig1.png)
 
-- The pipeline of OccSora. The 4D occupancy scene tokenizer achieves compression and restoration of real information. The compressed information and vehicle trajectories are simultaneously used as inputs for the diffusion-based world model, generating trajectory-controllable tokens that are decoded into 4D occupancy.
-
-
-
-
-
-
-
-
+The pipeline of OccSora. The 4D occupancy scene tokenizer achieves compression and restoration of real information. The compressed information and vehicle trajectories are simultaneously used as inputs for the diffusion-based world model, generating trajectory-controllable tokens that are decoded into 4D occupancy.
 
 
 ## Getting Started
 
 ### Installation
-1. Create conda environment with python version 3.8.0
+1. Create a conda environment with Python version 3.8.0
 
 2. Install all the packages in environment.yaml
 
-3. Anything about the installation of mmdetection3d, please refer to [mmdetection3d](https://mmdetection3d.readthedocs.io/en/latest/getting_started.html#installation)
+3. Please refer to [mmdetection3d](https://mmdetection3d.readthedocs.io/en/latest/getting_started.html#installation) about the installation of mmdetection3d
 
 ### Preparing
-1. Create soft link from data/nuscenes to your_nuscenes_path
+1. Create a soft link from data/nuscenes to your_nuscenes_path
 
 2. Prepare the gts semantic occupancy introduced in [Occ3d]
 
-3. Download (From: https://github.com/wzzheng/TPVFormer/tree/main ) generated train/val pickle files and put them in data/
+3. Download the generated [train/val pickle files]( https://github.com/wzzheng/TPVFormer/tree/main) and put them in data/
 
     [nuscenes_infos_train_temporal_v3_scene.pkl]
 
@@ -98,13 +85,13 @@ Train the OccSora on A100 with 80G GPU memory.
 torchrun --nnodes=1 --nproc_per_node=8 train_2.py --model DiT-XL/2 --data-path /path
 ```
 ### Evaluation
-Eval the model on A100 with 80G GPU memory.  
+Evaluate the model on A100 with 80G GPU memory.  
 
 The token is obtained by denoising the noise samples_array.npy
 ```
 python sample.py --model DiT-XL/2 --image-size 256 --ckpt "/results/001-DiT-XL-2/checkpoints/1200000.pt"
 ```
-### Visualize
+### Visualization
 
 
 ```
@@ -119,3 +106,11 @@ Also thanks to these excellent open-sourced repos:
 [TPVFormer](https://github.com/wzzheng/TPVFormer) 
 [MagicDrive](https://github.com/cure-lab/MagicDrive)
 [BEVFormer](https://github.com/fundamentalvision/BEVFormer)
+
+## Citation
+
+If you find this project helpful, please consider citing the following paper:
+```
+@article{
+}
+```
