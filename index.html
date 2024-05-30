@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+<title>OccSora</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+<link href="bootstrap.min.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
+<link href="opensans.css" rel="stylesheet">
+<link rel="icon" href="images/logo3.png">
+<link href="style.css" rel="stylesheet">
+<style>
+  .container_2{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+</style>
+
+<style>
+.paperthumb {
+  float:left; width: 120px; margin: 3px 10px 7px 0;
+}
+.paperdesc {
+  clear: both;
+}
+</style>
+</head>
+
+<body class="nd-docs">
+<div class="nd-pageheader">
+ <div class="container">
+ <p class="lead" style="font-size:30px">
+    <b><a href="https://arxiv.org/">OccSora: 4D Occupancy Generation Models as<br> World Simulators for Autonomous Driving </a></b>
+  <address style="font-size: 110%;">
+    <nobr><a href="https://github.com/LeningWang">Lening Wang</a>,</nobr>
+    <nobr><a href="https://wzzheng.net/">Wenzhao Zheng</a><sup>†</sup>,</nobr>
+    <nobr><a href="https://shi.buaa.edu.cn/renyilong/zh_CN/index.htm">Yilong Ren</a>,</nobr>
+    <nobr><a href="https://scholar.google.com/citations?user=d0WJTQgAAAAJ&hl=zh-CN&oi=ao">Han Jiang</a>,</nobr>
+    <nobr><a href="https://zhiyongcui.com/">Zhiyong Cui</a>,</nobr>
+    <nobr><a href="https://shi.buaa.edu.cn/09558/zh_CN/index.htm">Haiyang Yu</a>,</nobr>
+    <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup></sup>
+  <br>
+      <nobr>State Key Lab of Intelligent Transportation System-Beihang University</nobr>, 
+      <nobr>Tsinghua University</nobr>, 
+      <nobr>UC Berkeley</nobr>
+      <!-- <nobr><sup>2</sup>PhiGent Robotics</nobr> -->
+  </address>
+   <!-- <div style="font-size: 170%;">CVPR 2023</div> -->
+  <address style="font-size: 120%;">
+	 <!-- <br> -->
+  [<a href="https://arxiv.org/pdf/"><b>Paper (Arxiv)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- [<a href="https://www.youtube.com/">Video(Youtube)</a>]&nbsp;&nbsp;&nbsp;&nbsp; -->
+  [<a href="https://github.com/wzzheng/OccSora"><b>Code (GitHub)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- [<a href="https://zhuanlan.zhihu.com">Post(Zhihu)</a>] -->
+  </address>
+  <small>† Corresponding author.</small>
+ </div>
+ </p>
+ </div>
+</div> <!-- end nd-pageheader -->
+
+<div class="container">
+
+
+<p align="center">
+  <video width="90%" controls>
+    <source src="videos/demo.mp4" type="video/mp4">
+  </video>
+</p>
+
+<p align="center">
+    <img src="images/teaser.png" width="90%">
+</p>
+<p><b>The pipeline of OccSora.</b> 
+The 4D occupancy scene tokenizer achieves compression and restoration of real information. The compressed information and vehicle trajectories are simultaneously used as inputs for the diffusion-based world model, generating trajectory-controllable tokens that are decoded into 4D occupancy.
+</p>
+
+
+<!-- <h2>Abstract</h2><hr>
+<p>Modern methods for vision-centric autonomous driving perception widely adopt the bird's-eye-view (BEV) representation to describe a 3D scene.
+  Despite its better efficiency than voxel representation, it has difficulty describing the fine-grained 3D structure of a scene with a single plane.
+  To address this, we propose a tri-perspective view (TPV) representation which accompanies BEV with two additional perpendicular planes.
+  We model each point in the 3D space by summing its projected features on the three planes. 
+  To lift image features to the 3D TPV space, we further propose a transformer-based TPV encoder (TPVFormer) to obtain the TPV features effectively.
+  We employ the attention mechanism to aggregate the image features corresponding to each query in each TPV plane. 
+  Experiments show that our model trained with sparse supervision effectively predicts the semantic occupancy for all voxels.
+  We demonstrate for the first time that using only camera inputs can achieve comparable performance with LiDAR-based methods on the LiDAR segmentation task on nuScenes.</p> -->
+
+
+<h2>4D Occupancy Scene Tokenizer</h2><hr>
+
+
+<p align="center">
+    <img src="images/comparisons.png" width="90%">
+</p>
+<p>
+  The structure of the 4D occupancy scene tokenizer. The proposed method encodes and compresses 4D scenes to extract high-dimensional features, which are then decoded to retrieve the spatiotemporal physical characteristics of the scenes.
+</p>
+
+
+
+<h2>Diffusion-based World Model</h2><hr>
+
+
+<p align="center">
+     <img src="images/overview.png" width="90%">
+</p>
+
+  The structure of the diffusion-based world model. The model involves utilizing the optimal codebook obtained from training the 4D occupancy scene tokenizer to convert 4D occupancy into a sequence of tokens. These tokens, along with the ego vehicle trajectory and random noise, are then combined as input for denoising training to acquire the generated token.
+
+
+
+
+<h2>Results</h2><hr>
+
+
+
+<h4>4D Occupancy Generation</h4><hr>
+
+Visualization of reconstruction of the 4D occupancy scene tokenizer.
+
+<p></p>
+
+<p align="center">
+  <img src="images/exp1.png" width="90%">
+</p>
+<!-- <b>Visualization results on 3D semantic occupancy prediction and nuScenes LiDAR segmentation.</b> Our method can generate more comprehensive prediction results than the LiDAR segmentation ground truth. -->
+
+
+<h4>Trajectory Video Generation.</h4><hr>
+
+4D occupancy generation under different input trajectories. From top to bottom, there is go straight, turning right, and motionless, with each scene generation corresponding to the trajectory, ensuring logical coherence and continuity.
+
+<p></p>
+
+<p align="center">
+  <img src="images/exp3.png" width="90%">
+</p>
+
+
+<h4>Scene Video Generation.</h4><hr>
+
+Generating diverse continuous scenes under trajectory control. The generated scenes exhibit diversity while maintaining the stability of the original trajectory control.
+
+
+<p></p>
+
+<p align="center">
+  <img src="images/exp5.png" width="90%">
+</p>
+
+
+
+
+
+
+<p>
+<div class="card">
+<h3 class="card-header">Bibtex</h3>
+<div class="card-block">
+<pre class="card-text clickselect">
+  @article{
+}
+</pre>
+</div>
+</div>
+</p>
+
+
+<p align="right">
+     <a href="https://hanlab.mit.edu/projects/anycost-gan/">Website Template</a>
+</p>
+
+</div>
+</div> <!-- row -->
+
+</div> <!-- container -->
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight * 50+ "px";
+      } 
+      content.style.height = "550%";
+    });
+  }
+</script>
+
+</body>
+</html>
+
+
