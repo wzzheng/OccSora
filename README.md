@@ -1,6 +1,6 @@
 # OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving
 
-### [Paper](https://arxiv.org/)  | [Project Page](https://wzzheng.net/OccSora) 
+### [Paper](https://arxiv.org/abs/2405.20337)  | [Project Page](https://wzzheng.net/OccSora) 
 
 
 > OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving
@@ -15,7 +15,7 @@ With trajectory-aware 4D generation, OccSora has the potential to serve as a wor
 ## News
 
 - **[2024/05/31]** Training, evaluation, and visualization code release.
-- **[2024/05/31]** Paper released on [arXiv](https://arxiv.org/abs/2405.).
+- **[2024/05/31]** Paper released on [arXiv](https://arxiv.org/abs/2405.20337).
 
 
 ## Demo
@@ -90,8 +90,6 @@ The token is obtained by denoising the noise samples_array.npy
 python sample.py --model DiT-XL/2 --image-size 256 --ckpt "/results/001-DiT-XL-2/checkpoints/1200000.pt"
 ```
 ### Visualization
-
-
 ```
 python visualize_demo.py --py-config config/train_vqvae.py --work-dir out/vqvae
 ```
@@ -112,7 +110,7 @@ If you find this project helpful, please consider citing the following paper:
   @article{wang2024occsora,
     title={OccSora: 4D Occupancy Generation Models as World Simulators for Autonomous Driving},
     author={Wang, Lening and Zheng, Wenzhao and Ren, Yilong and Jiang, Han and Cui, Zhiyong and Yu, Haiyang and Lu, Jiwen},
-    journal={arXiv preprint arXiv:2405.},
+    journal={arXiv preprint arXiv:2405.20337},
     year={2024}
 	}
 ```
